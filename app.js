@@ -70,3 +70,5 @@ $('copy').addEventListener('click',async()=>{
   try{await navigator.clipboard.writeText(content);$('copy').textContent='Résultats copiés';setTimeout(()=>$('copy').textContent='Copier les résultats',1800)}catch{window.prompt('Copie les résultats :',content)}
 });
 update();
+
+if("serviceWorker" in navigator&&location.protocol.startsWith("http")){addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}))}
