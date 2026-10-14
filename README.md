@@ -16,14 +16,16 @@ Titres Montserrat ExtraBold, textes Inter (charte graphique RE.SOURCE v1.0). Les
 ## Installation locale
 Ouvrir `index.html` avec un navigateur moderne. Aucune installation ni compilation requise.
 
-## Publier sur GitHub Pages
-1. Créer un dépôt public sur GitHub, par exemple `calculateur-pbm`.
-2. Ajouter **tout le contenu de ce dossier à la racine du dépôt**, y compris le dossier `fonts/`, `logo.webp` et les icônes `icon-*.png`.
-3. Dans GitHub : **Settings > Pages > Build and deployment**.
-4. Choisir **Deploy from a branch**, puis **main** et **/(root)**, et enregistrer.
-5. L'adresse sera de la forme `https://VOTRE-IDENTIFIANT.github.io/calculateur-pbm/` après publication.
+## Publication et installation
+L'application est publiée avec GitHub Pages (branche `main`, dossier racine) :
+https://jbpruvot.github.io/calculateur-pbm/
 
-Une fois publiée sur HTTPS, l'application peut également être ajoutée à l'écran d'accueil de nombreux smartphones grâce au manifeste web. Elle n'utilise aucun service externe.
+Installation comme application :
+- Chrome ou Edge sur PC : icône d'installation dans la barre d'adresse, ou menu > « Installer ».
+- Tablette Android (Chrome) : menu > « Installer l'application ».
+- iPad (Safari) : Partager > « Sur l'écran d'accueil ».
+
+Le service worker (`sw.js`) garde une copie locale : après une première ouverture, l'application fonctionne sans connexion et se met à jour dès qu'une connexion est disponible.
 
 ## Calcul et valeurs sources
 Les valeurs d'origine sont en W/m², converties en mW/cm² :
@@ -50,6 +52,7 @@ Les valeurs d'origine sont en W/m², converties en mW/cm² :
 - `styles.css` : apparence
 - `app.js` : calculs et interactions
 - `manifest.webmanifest` : métadonnées pour installation sur écran d'accueil
+- `sw.js` : mode hors ligne
 - `fonts/` : Montserrat et Inter (licence OFL)
 - `logo.webp` : logo RE.SOURCE
 - `favicon.svg`, `icon-192.png`, `icon-512.png` : icônes génériques (dégradé aux couleurs de la charte, ne reproduisent pas le logo)
@@ -57,4 +60,4 @@ Les valeurs d'origine sont en W/m², converties en mW/cm² :
 ## Licence
 Usage interne. Le logo RE.SOURCE est la propriété de VITALYS SARL ; les polices Montserrat et Inter sont sous licence SIL OFL.
 
-La page contient `noindex` pour éviter l'indexation par les moteurs de recherche, mais un dépôt GitHub public reste lisible par tous (valeurs vendeur incluses).
+Le dépôt est public : le code, les mesures du vendeur et le nom du lit sont lisibles par tous. La page contient `noindex` pour limiter l'indexation par les moteurs de recherche, sans l'empêcher totalement.
