@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#1F226F">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Calculateur indicatif d'irradiance et de fluence théoriques pour le lit MERICAN ZEN PLUS.">
+  <title>RE.SOURCE — Calculateur PBM</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="preload" href="fonts/montserrat-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="wrap">
+    <header class="hero">
+      <img class="logo" src="logo.webp" width="944" height="227" alt="RE.SOURCE — Centre de vitalité, récupération et performance">
+      <div class="hero-text">
+        <p class="eyebrow">Outil technique interne</p>
+        <h1>Calculateur PBM</h1>
+        <p class="sub">MERICAN ZEN PLUS · 26 040 LED</p>
+      </div>
+    </header>
+
+    <section class="card" aria-labelledby="w-title">
+      <div class="heading">
+        <h2 id="w-title">Longueurs d’onde</h2>
+        <div class="actions">
+          <button type="button" id="all" class="subtle">Tout sélectionner</button>
+          <button type="button" id="none" class="subtle">Aucune</button>
+        </div>
+      </div>
+      <div id="wavelengths" class="wave-list"></div>
+    </section>
+
+    <section class="card controls" aria-label="Paramètres de la séance">
+      <div class="control-head">
+        <label for="power">Puissance relative <small>hypothèse linéaire, non vérifiée</small></label>
+        <output id="power-out" for="power">100 %</output>
+      </div>
+      <input type="range" id="power" min="0" max="100" step="5" value="100">
+      <div class="control-head">
+        <label for="minutes">Durée d’exposition</label>
+        <output id="minutes-out" for="minutes">20 min</output>
+      </div>
+      <input type="range" id="minutes" min="1" max="60" step="1" value="20">
+      <div class="presets" id="presets" role="group" aria-label="Durées rapides">
+        <button type="button" data-time="5">5 min</button>
+        <button type="button" data-time="10">10 min</button>
+        <button type="button" data-time="15">15 min</button>
+        <button type="button" data-time="20">20 min</button>
+        <button type="button" data-time="30">30 min</button>
+      </div>
+    </section>
+
+    <section class="card results" aria-labelledby="r-title">
+      <h2 id="r-title">Résultats simulés</h2>
+
+      <div class="hero-metric" aria-live="polite" aria-atomic="true">
+        <span class="label">Irradiance totale théorique</span>
+        <strong class="big"><span id="total">75,53</span> <small>mW/cm²</small></strong>
+      </div>
+
+      <div class="split" aria-hidden="true"><div id="split-red"></div><div id="split-nir"></div></div>
+      <div class="two">
+        <div class="metric red"><span class="label"><i class="dot dot-red"></i>Rouge · 630–660 nm</span><strong><span id="red">32,65</span> <small>mW/cm²</small></strong></div>
+        <div class="metric nir"><span class="label"><i class="dot dot-nir"></i>NIR · 810–940 nm</span><strong><span id="nir">42,88</span> <small>mW/cm²</small></strong></div>
+      </div>
+
+      <div class="metric fluence">
+        <span class="label">Fluence cumulée théorique (à la surface)</span>
+        <strong><span id="dose">90,63</span> <small>J/cm²</small></strong>
+        <p id="formula" class="formula">75,53 × 1 200 / 1 000 = 90,63 J/cm²</p>
+      </div>
+
+      <div class="compare">
+        <div class="compare-row"><span>Part des 109 mW/cm² annoncés par le vendeur</span><b id="percent">69,3 %</b></div>
+        <div class="progress" role="presentation"><div id="bar"></div></div>
+        <p class="hint">Chiffre vendeur, non vérifié de manière indépendante.</p>
+      </div>
+
+      <p id="selection-count" class="count">5 longueurs d’onde sélectionnées</p>
+      <div class="actions bottom">
+        <button id="copy" type="button">Copier les résultats</button>
+        <button id="reset" type="button" class="subtle">Réinitialiser</button>
+      </div>
+    </section>
+
+    <aside class="notice" aria-labelledby="n-title">
+      <h2 id="n-title">Limites métrologiques</h2>
+      <p>Les résultats additionnent les mesures individuelles transmises par le fournisseur. Ils <strong>ne représentent pas une mesure réelle simultanée</strong> à la surface du corps. La sommation suppose une même position et des conditions identiques. La variation avec le pourcentage de puissance est supposée linéaire, non vérifiée. Les fluences calculées sont incidentes et ne constituent ni une dose absorbée ni un protocole validé.</p>
+    </aside>
+    <footer>RE.SOURCE · Calculateur indicatif, sans prétention médicale</footer>
+  </main>
+</body>
+</html>
